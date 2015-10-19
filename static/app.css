@@ -1,0 +1,48 @@
+#navbar {
+    font-size:18px;
+    font-family:Garamond, Georgia, serif;
+    margin:auto;
+    line-height:1em;
+    font-weight:normal;
+    text-align:center;
+}
+
+#main {
+	width:800px;
+	border:1px solid black;
+	border-radius: 10px;
+	margin:auto;
+	padding:10px;
+}
+
+#output {
+    width:800px;
+    border:1px solid black;
+    border-radius: 10px;
+    margin:auto;
+    padding:10px;
+    font-family: Courier;
+    font-size: 11px;
+}
+
+/* unvisited link */
+a:link {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* visited link */
+a:visited {
+    color: #333;
+    text-decoration: none;
+}
+/* mouse over link */
+a:hover {
+    color: #666;
+    text-decoration: none;
+}
+/* selected link */
+a:active {
+    color: #BBB;
+    text-decoration: none;
+}

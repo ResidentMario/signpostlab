@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} Labs: ResMar's Toolbox {% endblock %}</title>
+    <link rel= "stylesheet" type= "text/css" href= "static/app.css">
+</head>
+<body>
+	<div id="navbar">
+		{% block navbar %} <b>Resident Mario's Toolbox</b>: <a href="../fc_importer">FCR Importer</a> • <a href="../tn_importer">Tech/News Importer</a> • <a href="../wm_blog_importer">Blog Importer</a> {% endblock %}
+	</div>
+	<br/>
+	<div id="main">
+		{% block content %} Here you can find and make use of tools I have written for the purposes of simplifying routine tasks at the <i>Wikipedia Signpost</i>. All of the work I have done here so far has been in the form of Python scripts, the source code for which you can find on <a href="https://github.com/ResidentMario">my GitHub</a>. Consult the documentation there for detailed usage instructions. To contact me directly try <a href="https://en.wikipedia.org/wiki/User_talk:Resident_Mario">my talk page</a>. If it's urgent try <a href="https://en.wikipedia.org/wiki/Special:EmailUser/Resident_Mario">e-mailing me</a>. {% endblock %}
+	</div>
+	<br/>
+	<div id="output">
+		{% block output %}
+		{% if code_returned %}
+		{{ code_returned }}
+		{% else %}
+  		Waiting for input...
+		{% endif %}
+		{% endblock %}
+	</div>
+</body>
