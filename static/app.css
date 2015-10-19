@@ -1,6 +1,6 @@
 #navbar {
-    font-size:18px;
-    font-family:Garamond, Georgia, serif;
+    font-size:14px;
+    font-family:Tahoma, Arial;
     margin:auto;
     line-height:1em;
     font-weight:normal;
@@ -11,6 +11,8 @@
 	width:800px;
 	border:1px solid black;
 	border-radius: 10px;
+    font-family: Tahoma, Arial;
+    font-size:10pt;
 	margin:auto;
 	padding:10px;
 }

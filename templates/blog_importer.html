@@ -1,0 +1,21 @@
+{% extends "frame.html" %}
+{% block title %}Labs: WM Blog Importer{% endblock %}
+{% block content %}
+
+	<p>This script imports a selected Blog story into the <i>Wikipedia Signpost</i> "Blog" section.
+
+	<p>For detailed information on operating this script refer to <a href="https://github.com/ResidentMario/Blog_Importer">its documentation</a> and source code on GitHub.
+
+<center>
+<form action="wm_blog_importer" method="POST">
+  Blog URL: <input type="text" name="blog_post_url" value="" style="width:500px"/><br/><br/>
+  <input type="submit" value="Submit" style="background:#efefef; border:1px solid #ddd; font-size:14px"/>
+</form>
+</center>
+
+<!--<form action="wm_blog_importer" method="Post">
+Blog URL: <input type="text" name="input" value="https://blog.wikimedia.org/2015/07/16/content-translation-wikipedia-all-languages/" size=100>
+</form> 
+</center>-->
+
+{% endblock %}
