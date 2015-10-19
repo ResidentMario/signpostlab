@@ -5,13 +5,15 @@ from flask import request
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    # return 'Hello World! Got this server working---and Git too! (2)'
+def home():
     return render_template('frame.html')
 
-@app.route('/fc_importer', methods=['POST', 'GET'])
+@app.route('/fc_importer', methods=['GET', 'POST'])
 def fc_importer():
-	return render_template('fc_importer.html')
+	if request.method == 'POST':
+		pass
+	else:
+		return render_template('fc_importer.html')
 
 @app.route('/wm_blog_importer', methods=['GET', 'POST'])
 def blog_importer():
@@ -20,16 +22,20 @@ def blog_importer():
 		if not data or 'blog.wikimedia.org' not in data:
 			return render_template('blog_importer.html', code_returned="Invalid input. Make sure that you inputted the URL of a valid WM Blog post.")
 		else:
-			return 'Input successfully parsed; just need to plug the application into here now...'
+			# return render_template('blog_importer.html', code_returned=os.system("Blog_Importer.py " + data))
+			# return render_template('blog_importer.html', code_returned=subprocess.check_output(["ls", '-l'], universal_newlines=True))
 			# return render_template('blog_importer.html', code_returned=Blog_Importer.import_blog(data, ''))
+			pass
 	else:
 		return render_template('blog_importer.html')
 
-@app.route('/tn_importer', methods=['POST', 'GET'])
+@app.route('/tn_importer', methods=['GET', 'POST'])
 def tn_importer():
-	return render_template('tn_importer.html')
-
-
+	if request.method == 'POST':
+		pass
+	else:
+		return render_template('tn_importer.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True) # Change this to just app.run() in the production version.
+    # app.run()
