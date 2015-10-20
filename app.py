@@ -8,14 +8,14 @@ app = Flask(__name__)
 def home():
     return render_template('frame.html')
 
-@app.route('../fc_importer', methods=['GET', 'POST'])
+@app.route('/fc_importer', methods=['GET', 'POST'])
 def fc_importer():
 	if request.method == 'POST':
 		pass
 	else:
 		return render_template('fc_importer.html')
 
-@app.route('../wm_blog_importer', methods=['GET', 'POST'])
+@app.route('/wm_blog_importer', methods=['GET', 'POST'])
 def blog_importer():
 	if request.method == 'POST':
 		data = request.form['blog_post_url']
@@ -29,7 +29,7 @@ def blog_importer():
 	else:
 		return render_template('blog_importer.html')
 
-@app.route('../tn_importer', methods=['GET', 'POST'])
+@app.route('/tn_importer', methods=['GET', 'POST'])
 def tn_importer():
 	if request.method == 'POST':
 		pass
