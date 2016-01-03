@@ -48,9 +48,7 @@ def fetch(url):
                 post = post.replace(linefeed[line_num + 2], "")
             img_str = "{{Signpost inline image|image=File:%s|caption=%s}}\n<!-- %s -->" % (img_str, caption,
                                                                                            img_str_copy)
-            print(img_str)
             post = post.replace(linefeed[line_num], img_str)
-    print(post)
     return post
 
 
