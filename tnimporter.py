@@ -36,11 +36,11 @@ def main():
 	content = '''{{Signpost draft}}<noinclude>{{Wikipedia:Signpost/Template:Signpost-header|||}}</noinclude>
 
 	{{Wikipedia:Signpost/Template:Signpost-article-start|{{{1|Tech news in brief}}}|By [[meta:Tech/Ambassadors|Wikimedia tech ambassadors]]|'''
-	content += signpostlib.getNextSignpostPublicationDate().strftime('%Y-%m-%d') + '''}}'''
+	content += signpostlib.get_next_signpost_publication_date().strftime('%Y-%m-%d') + '''}}'''
 	content += '\n{{Wikipedia:Wikipedia Signpost/Templates/Tech news}}'
 	content += report_content
 	content += '''\n<noinclude>{{Wikipedia:Signpost/Template:Signpost-article-comments-end||'''
-	content += signpostlib.getPreviousSignpostPublicationDate().strftime('%Y-%m-%d')
+	content += signpostlib.get_previous_signpost_publication_date().strftime('%Y-%m-%d')
 	content += '|'
 	content += '''}}</noinclude>'''
 
@@ -49,6 +49,6 @@ def main():
 if __name__ == '__main__':
 	content = main()
 	# Publish.
-	post_point = signpostlib.getNextSignpostPublicationString() + '/Technology report'
+	post_point = signpostlib.get_next_signpost_issue() + '/Technology report'
 	signpostlib.saveContentToPage(content, post_point, 'Importing Tech News content via the [https://github.com/ResidentMario/TN_Importer TN_Importer] script.')
 	print("Done.")
