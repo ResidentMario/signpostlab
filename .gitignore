@@ -21,6 +21,7 @@ var/
 .installed.cfg
 *.egg
 MANIFEST
+*.pyc
 
 # PyCharm project
 .idea

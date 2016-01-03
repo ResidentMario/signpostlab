@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 blogimporter.py
 This script converts posts on the Wikimedia Blog into posts suitable for inclusion in the Wikipedia Signpost.
@@ -10,6 +11,7 @@ Running it in the command line further requires that it be configrued.
 """
 
 import requests
+from bs4 import BeautifulSoup
 
 
 def fetch(url):
@@ -21,20 +23,15 @@ def fetch(url):
     post = r.text[r.text.index('<div class="entry">') + len('<div class="entry">'):]
     post = post[:post.index('<div class="socials">')]
     post = post[:post.rindex('</div>')]
+    # post = post.replace("<p>", "")
+    # post = post.replace("</p>", "NEWLINEPLACEHOLDER")
+    post = post.replace("	", "")
     post = requests.post('http://rest.wikimedia.org/en.wikipedia.org/v1/transform/html/to/wikitext',
                         data={'html': post}).text
-    # Remove conversion artifact.
-    post.replace("\\'", "")
-    # TODO: None of these operations work.
-    # Remove trailing tabs.
-    post.replace("	", "")
-    # Replace curly single quotes with straight ones.
-    post.replace("’", "\'")
-    post.replace("&#8216;", "\'")
-    # Replace curly double quotes with straight ones.
-    post.replace("&#8220;", "\"")
-    post.replace("&#8221;", "\"")
-    post.encode('utf-8')
+    post = BeautifulSoup(post, "html.parser")
+    post = post.get_text()
+    # post = post.replace("NEWLINEPLACEHOLDER",  "\n")
+    print(post)
     return post
 
 

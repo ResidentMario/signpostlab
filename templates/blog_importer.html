@@ -2,13 +2,18 @@
 {% block title %}Labs: WM Blog Importer{% endblock %}
 {% block content %}
 
-	<p>This script imports a selected Blog story into the <i>Wikipedia Signpost</i> "Blog" section.
-
-	<p>For detailed information on operating this script refer to <a href="https://github.com/ResidentMario/Blog_Importer">its documentation</a> and source code on GitHub.
+	<p>
+        The <i>Wikipedia Signpost</i> occasionally reprints stories which first appeared on the <a
+            href="https://blog.wikimedia.org/">Wikimedia Blog.</a> This script assists with the process by providing
+        machine-assisted translations from the latter format to the former one. For more information on this
+        partnership refer to our <a
+            href="https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost/Newsroom/Content_guidance#Blog">content
+        guidance</a>.
+    </p>
 
 <center>
-<form action="wm_blog_importer" method="POST">
-  Blog URL: <input type="text" name="blog_post_url" value="" style="width:500px"/><br/><br/>
+<form action="blog-importer.html" method="POST">
+  Blog URL: <input type="text" name="blog_post_url" value="" style="width:500px"/>
   <input type="submit" value="Submit" style="background:#efefef; border:1px solid #ddd; font-size:14px"/>
 </form>
 </center>
