@@ -59,6 +59,21 @@ def blog():
                 img_str = "{{Signpost inline image|image=File:%s|caption=%s}}\n<!-- %s -->" % (img_str, caption,
                                                                                                img_str_copy)
                 post = post.replace(linefeed[line_num], img_str)
+                front_matter = """{{Signpost draft}}{{Wikipedia:Signpost/Template:Signpost-header|||}}
+
+<div style="margin-left:50px; margin-right:50px;">
+{{Wikipedia:Signpost/Template:Signpost-article-start|{{{1|(Your article's descriptive subtitle here)}}}|By [[User:{{<includeonly>subst:</includeonly>REVISIONUSER}}|]]| {{<includeonly>subst:</includeonly>#time:j F Y|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|4}}}}}}
+</div>
+
+{{Wikipedia:Wikipedia Signpost/Templates/WM Blog}}
+
+<div style="width:46em; line-height:1.6em; font-size:1em; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; padding-left:5em;" class="plainlinks">"""
+                back_matter = """</div>
+
+<noinclude>{{Wikipedia:Signpost/Template:Signpost-article-comments-end||{{
+<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|1}}|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|5}}<noinclude>|demospace=1</noinclude>}}</noinclude><noinclude>[[Category:Wikipedia Signpost templates|{{SUBPAGENAME}}]]</noinclude>"""
+                post = front_matter + post + back_matter
+
         return render_template('blog_importer.html', code_returned=post)
 
 if __name__ == '__main__':
