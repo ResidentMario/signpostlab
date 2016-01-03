@@ -17,6 +17,9 @@ from bs4 import BeautifulSoup
 def fetch(url):
     if "blog.wikimedia.org" not in url:
         raise RuntimeError("The URL" + url + "does not reference the Wikimedia Blog.")
+    # For unidentifiable reasons HTTPS works locally but not in Labs, so we downgrade to HTTP.
+    if "https" in url:
+        url = url.replace("https", "http", 1)
     r = requests.get(url)
     if r.status_code != 200:
         raise RuntimeError("The blog post located at URL " + url + "could not be resolved.")
