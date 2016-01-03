@@ -42,6 +42,7 @@ pip-delete-this-directory.txt
 output.txt
 test.py
 api_test.py
+mw_api_lib.py
 
 # Credentials
 mw_api_credentials.json
