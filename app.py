@@ -3,6 +3,8 @@ from flask import render_template
 from flask import request
 import requests
 from bs4 import BeautifulSoup
+# import mwapi
+
 app = Flask(__name__)
 
 
@@ -73,8 +75,35 @@ def blog():
 <noinclude>{{Wikipedia:Signpost/Template:Signpost-article-comments-end||{{
 <includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|1}}|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|5}}<noinclude>|demospace=1</noinclude>}}</noinclude><noinclude>[[Category:Wikipedia Signpost templates|{{SUBPAGENAME}}]]</noinclude>"""
                 post = front_matter + post + back_matter
-
         return render_template('blog_importer.html', code_returned=post)
+
+
+@app.route('/tech-news-importer.html', methods=['GET', 'POST'])
+def tech():
+    if request.method == 'GET':
+        return render_template('tn_importer.html')
+    else:
+        redir = requests.get('https://meta.wikimedia' + '.org/w/index.php?&action=raw&title=' + 'Tech/News/Latest').text
+        actual_post_name = redir[redir.find("[[") + 2:redir.find("]]")]
+        post = requests.get('https://meta.wikimedia' + '.org/w/index.php?&action=raw&title=' + actual_post_name +
+                            '/en').text
+        post = post[post.find('<section begin="tech-newsletter-content"/>'):post.find('<section end="tech-newsletter-content"/>')]
+
+        front_matter = """{{Signpost draft}}{{Wikipedia:Signpost/Template:Signpost-header|||}}
+
+<div style="margin-left:50px; margin-right:50px;">
+{{Wikipedia:Signpost/Template:Signpost-article-start|{{{1|(Your article's descriptive subtitle here)}}}|By [[User:{{<includeonly>subst:</includeonly>REVISIONUSER}}|]]| {{<includeonly>subst:</includeonly>#time:j F Y|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|4}}}}}}
+</div>
+
+{{Wikipedia:Wikipedia Signpost/Templates/Tech news}}
+
+"""
+        back_matter = """<section end="tech-newsletter-content"/>
+
+<noinclude>{{Wikipedia:Signpost/Template:Signpost-article-comments-end||{{
+<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|1}}|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|5}}<noinclude>|demospace=1</noinclude>}}</noinclude><noinclude>[[Category:Wikipedia Signpost templates|{{SUBPAGENAME}}]]</noinclude>"""
+        post = front_matter + post + back_matter
+        return render_template('tn_importer.html', code_returned=post)
 
 if __name__ == '__main__':
     app.run(debug=True)
