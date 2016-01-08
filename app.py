@@ -106,4 +106,5 @@ def tech():
         return render_template('tn_importer.html', code_returned=post)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run()
