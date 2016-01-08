@@ -11,16 +11,18 @@
         guidance</a>.
     </p>
 
+    <p>
+        Note that while this tool uses presets for the Wikimedia Blog, the HTML-to-Wikitext conversion that it uses
+        works (up to a certain point) on any arbitrary HTML. To use it on some other blog or post you can copy-paste
+        the source into the HTML transform <a
+            href="http://rest.wikimedia.org/en.wikipedia.org/v1/?doc#!/Transforms/post_transform_html_to_wikitext_title_revision">directly</a>.
+    </p>
+
 <center>
 <form action="blog-importer.html" method="POST">
   Blog URL: <input type="text" name="blog_post_url" value="" style="width:500px"/>
   <input type="submit" value="Submit" style="background:#efefef; border:1px solid #ddd; font-size:14px"/>
 </form>
 </center>
-
-<!--<form action="wm_blog_importer" method="Post">
-Blog URL: <input type="text" name="input" value="https://blog.wikimedia.org/2015/07/16/content-translation-wikipedia-all-languages/" size=100>
-</form> 
-</center>-->
 
 {% endblock %}
