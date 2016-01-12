@@ -91,9 +91,7 @@ def tech():
 
         front_matter = """{{Signpost draft}}{{Wikipedia:Signpost/Template:Signpost-header|||}}
 
-<div style="margin-left:50px; margin-right:50px;">
-{{Wikipedia:Signpost/Template:Signpost-article-start|{{{1|(Your article's descriptive subtitle here)}}}|By [[User:{{<includeonly>subst:</includeonly>REVISIONUSER}}|]]| {{<includeonly>subst:</includeonly>#time:j F Y|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|4}}}}}}
-</div>
+{{Wikipedia:Signpost/Template:Signpost-article-start|{{{1|Tech news in brief}}}|By [[meta:Tech/Ambassadors|Wikimedia tech ambassadors]]| {{<includeonly>subst:</includeonly>#time:j F Y|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|4}}}}}}
 
 {{Wikipedia:Wikipedia Signpost/Templates/Tech news}}
 
