@@ -13,14 +13,14 @@ def index():
     return render_template('frame.html')
 
 
-@app.route('/blog-importer.html', methods=['GET', 'POST'])
+@app.route('/signpostlab/blog-importer.html', methods=['GET', 'POST'])
 def blog():
     if request.method == 'GET':
         return render_template('blog_importer.html')
     else:
         url = request.form['blog_post_url']
         if "blog.wikimedia.org" not in url:
-            raise RuntimeError("The URL" + url + "does not reference the Wikimedia Blog.")
+            return render_template('blog_importer.html', code_returned="Blog URL not valid.")
         r = requests.get(url)
         if r.status_code != 200:
             raise RuntimeError("The blog post located at URL " + url + "could not be resolved.")
@@ -61,7 +61,7 @@ def blog():
                 img_str = "{{Signpost inline image|image=File:%s|caption=%s}}\n<!-- %s -->" % (img_str, caption,
                                                                                                img_str_copy)
                 post = post.replace(linefeed[line_num], img_str)
-                front_matter = """{{Signpost draft}}{{Wikipedia:Signpost/Template:Signpost-header|||}}
+        front_matter = """{{Signpost draft}}{{Wikipedia:Signpost/Template:Signpost-header|||}}
 
 <div style="margin-left:50px; margin-right:50px;">
 {{Wikipedia:Signpost/Template:Signpost-article-start|{{{1|(Your article's descriptive subtitle here)}}}|By [[User:{{<includeonly>subst:</includeonly>REVISIONUSER}}|]]| {{<includeonly>subst:</includeonly>#time:j F Y|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|4}}}}}}
@@ -70,15 +70,15 @@ def blog():
 {{Wikipedia:Wikipedia Signpost/Templates/WM Blog}}
 
 <div style="width:46em; line-height:1.6em; font-size:1em; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; padding-left:5em;" class="plainlinks">"""
-                back_matter = """</div>
+        back_matter = """</div>
 
 <noinclude>{{Wikipedia:Signpost/Template:Signpost-article-comments-end||{{
 <includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|1}}|{{<includeonly>subst:</includeonly>Wikipedia:Wikipedia Signpost/Issue|5}}<noinclude>|demospace=1</noinclude>}}</noinclude><noinclude>[[Category:Wikipedia Signpost templates|{{SUBPAGENAME}}]]</noinclude>"""
-                post = front_matter + post + back_matter
+        post = front_matter + post + back_matter
         return render_template('blog_importer.html', code_returned=post)
 
 
-@app.route('/tech-news-importer.html', methods=['GET', 'POST'])
+@app.route('/signpostlab/tech-news-importer.html', methods=['GET', 'POST'])
 def tech():
     if request.method == 'GET':
         return render_template('tn_importer.html')
