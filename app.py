@@ -13,7 +13,7 @@ def index():
     return render_template('frame.html')
 
 
-@app.route('/signpostlab/blog-importer.html', methods=['GET', 'POST'])
+@app.route('/blog-importer.html', methods=['GET', 'POST'])
 def blog():
     if request.method == 'GET':
         return render_template('blog_importer.html')
@@ -78,7 +78,7 @@ def blog():
         return render_template('blog_importer.html', code_returned=post)
 
 
-@app.route('/signpostlab/tech-news-importer.html', methods=['GET', 'POST'])
+@app.route('/tech-news-importer.html', methods=['GET', 'POST'])
 def tech():
     if request.method == 'GET':
         return render_template('tn_importer.html')
@@ -104,5 +104,5 @@ def tech():
         return render_template('tn_importer.html', code_returned=post)
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    app.run()
+    app.run(debug=True)
+    # app.run()
